@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>n0t3b00k</title>
+</head>
+<body>
+    <div style="font-family: 'Ubuntu', sans-serif;" class="container">
+        <h1>n0t3b00k</h1>
+        <h3>Create secure notes using your own cipher key</h3>
+        <div class="row" style="display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex;">
+            <div class="container-fluid col-md-6 bg-info">
+                <h3>Find a note:</h3>
+                <p><i>If your key is not valid, you'll get an encrypted version of a note.</i></p>
+                <form action="/note" method="post">
+                    <p>Note name:</p>
+                    <input type="text" name="note-name">
+                    <p>Encryption key:</p>
+                    <input type="text" name="key">&nbsp;&nbsp;&nbsp;
+                    <input type="submit" value="Find" class="btn btn-primary">
+                </form>
+            </div>
+            <div class="container col-md-6 bg-info">
+                <h3>Create a note:</h3>
+                <form action="/create" method="post">
+                    <p>Note name:</p>
+                    <input type="text" size="43" name="note-name" >
+                    <p>Note text:</p>
+                    <textarea rows="10" cols="46" name="text"></textarea>
+                    <p>Ecnryption key</p>
+                    <input type="text" size="35" name="key">&nbsp;&nbsp;&nbsp;
+                    <input type="submit" value="Create" class="btn btn-primary">
+                </form>
+                <p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
