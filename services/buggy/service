@@ -1,0 +1,20 @@
+#!/bin/bash
+
+echo "Welcome to SAFEST STORAGE EVER!!!!!"
+echo "\nPut/get?"
+read cmd
+
+echo "Filename?"
+read filename
+
+if [ $cmd = "put" ]; then
+    echo "Flag?"
+    read flag
+    echo $flag > storage/$filename
+elif [ $cmd = "get" ]; then
+    echo "Your secret: $(cat storage/$filename)"
+else
+    echo "Bad command"
+    exit 1
+fi
+

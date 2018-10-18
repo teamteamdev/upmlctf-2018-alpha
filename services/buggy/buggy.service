@@ -1,0 +1,14 @@
+[Unit]
+Description=UPML CTF 2018 Alpha: Buggy Service
+After=network.target
+
+[Service]
+Type=simple
+User=buggy
+Group=buggy
+WorkingDirectory=/home/buggy
+ExecStart=/usr/bin/env socat -T 30 tcp-l:3333,reuseaddr,fork exec:"./service"
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
