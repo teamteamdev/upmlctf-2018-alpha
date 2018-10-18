@@ -1,3 +1,8 @@
 # Notebook
 
-Запуск сервиса: python3 app.py
+## Start/stop/restart
+
+```bash
+service noteboook {start|stop|restart}
+```
+
