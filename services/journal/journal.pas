@@ -336,6 +336,16 @@ begin
 end;
 
 
+procedure ListUsers();
+// list of all users
+begin
+    foreach user: TUser in users do
+        if user.status < 1337 then
+            WriteLn(user.login);
+    Flush(output);
+end;
+
+
 procedure Action();
 // choice action
 begin
@@ -344,10 +354,11 @@ begin
         WriteLn('Available actions:');
         WriteLn('| 1 - Create an assignment');
         WriteLn('| 2 - Open an assignment');
+        WriteLn('| 3 - List of users');
         if user.status >= 1 then
-            WriteLn('| 3 - My assignments');
+            WriteLn('| 4 - My assignments');
         if user.status >= 1337 then
-            WriteLn('| 4 - List all assignments');
+            WriteLn('| 5 - List all assignments');
         WriteLn('| 0 - exit');
         Write('> ');
         Flush(output);
@@ -358,11 +369,13 @@ begin
         else if choice = 2 then 
             OpenAssignment()
         else if choice = 3 then
+            ListUsers()
+        else if choice = 4 then
             if user.status < 1 then begin
                 writeln('Not enough privileges!');
                 continue;
             end else ListMyAssignments()
-        else if choice = 4 then
+        else if choice = 5 then
             if user.status < 1337 then begin
                 writeln('Not enough privileges!');
                 continue;

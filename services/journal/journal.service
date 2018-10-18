@@ -7,9 +7,8 @@ Type=simple
 User=journal
 Group=journal
 WorkingDirectory=/home/journal
-ExecStart=/usr/bin/env socat -T 15 tcp-l:1428,reuseaddr,fork exec:/home/journal/journal.exe
+ExecStart=/usr/bin/env socat -T 30 tcp-l:1428,reuseaddr,fork exec:"mono /home/journal/journal.exe"
 Restart=always
 
 [Install]
 WantedBy=multi-user.target
-
