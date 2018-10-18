@@ -1,0 +1,15 @@
+[Unit]
+Description=UPML CTF 2018 Alpha: Journal Service
+After=network.target
+
+[Service]
+Type=simple
+User=journal
+Group=journal
+WorkingDirectory=/home/journal
+ExecStart=/usr/bin/env socat -T 15 tcp-l:1428,reuseaddr,fork exec:/home/journal/journal.exe
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
