@@ -1,0 +1,12 @@
+[Unit]
+Description=UPML CTF 2018 Alpha: notebook
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/notebook
+ExecStart=/usr/bin/env uwsgi --ini /home/notebook/uwsgi.ini
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
