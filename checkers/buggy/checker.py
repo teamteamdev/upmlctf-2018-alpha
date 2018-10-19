@@ -40,25 +40,25 @@ def socket_put(ip, key=None, value=None):
     
     r = remote(ip, PORT, timeout=1.5)
     
-    data = r.recvuntil("\n")
+    data = r.recvuntil("?\n")
     if not "Put/get?" in data:
         throw(Status.MUMBLE, "Invalid response")
     
     r.sendline("put")
     
-    data = r.recvuntil("\n")
+    data = r.recvuntil("?\n")
     if not "Token?" in data:
         throw(Status.MUMBLE, "Invalid response")
     
     r.sendline(key)
     
-    data = r.recvuntil("\n")
+    data = r.recvuntil("?\n")
     if not "Secret?" in data:
         throw(Status.MUMBLE, "Invalid response")
     
     r.sendline(value)
     
-    data = r.recvuntil("\n")
+    data = r.recvuntil("!\n")
     if not "OK!" in data:
         throw(Status.MUMBLE, "Invalid response")
     
@@ -70,20 +70,20 @@ def socket_put(ip, key=None, value=None):
 def socket_get(ip, key):
     r = remote(ip, PORT, timeout=1.5)
     
-    data = r.recvuntil("\n")
+    data = r.recvuntil("?\n")
     if not "Put/get?" in data:
         throw(Status.MUMBLE, "Invalid response")
     
     r.sendline("get")
     
-    data = r.recvuntil("\n")
+    data = r.recvuntil("?\n")
     if not "Token?" in data:
         throw(Status.MUMBLE, "Invalid response")
     
     r.sendline(key)
     
-    data = r.recvuntil("\n")
-    flag = re.search("Your secret: (.+)\n", data)
+    data = r.recvall(timeout=1.5)
+    flag = re.search("Your secret:\n(.+)\n", data)
     if flag is None:
         throw(Status.CORRUPT, "Can't get saved note")
     flag = flag.group(1)
@@ -110,7 +110,7 @@ def put(ip, flag):
 
 
 def get(ip, flag_id, flag):
-    value = socket_get(key, flag_id)
+    value = socket_get(ip, flag_id)
     
     if value != flag:
         throw(Status.CORRUPT, "Can't get saved note")
