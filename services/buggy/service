@@ -1,16 +1,17 @@
 #!/bin/bash
 
 echo "Welcome to SAFEST STORAGE EVER!!!!!"
-echo "\nPut/get?"
+echo "Put/get?"
 read cmd
 
-echo "Filename?"
+echo "Token?"
 read filename
 
 if [ $cmd = "put" ]; then
-    echo "Flag?"
+    echo "Secret?"
     read flag
     echo $flag > storage/$filename
+    echo "OK!"
 elif [ $cmd = "get" ]; then
     echo "Your secret: $(cat storage/$filename)"
 else
