@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    .navbar.navbar-light.bg-light.navbar-fixed
+      div
+        a.navbar-brand(href='/') Hackergrom
+      div
+        if state
+          span @#{state.name} &nbsp;&nbsp;&nbsp;
+          a.btn.btn-primary.btn-success(href='/new') Add a photo
+          span    
+          a.btn.btn-secondary(href='/logout') Log out
+        else
+          a.btn.btn-secondary(href='/signin') Sign in
+    block content

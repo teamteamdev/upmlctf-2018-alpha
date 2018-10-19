@@ -1,0 +1,24 @@
+{
+  "posts": [
+    {
+      "id": "ec2339c6-0fce-4aee-b232-8e10392cc8bf",
+      "author": "vanyaklimenko",
+      "date": 1539978785881,
+      "text": "woah it works",
+      "ext": ".png"
+    }
+  ],
+  "users": [
+    {
+      "email": "v@v.v",
+      "name": "vanyaklimenko",
+      "password": "$2b$04$U.Fm7Yo/ISlY2ZU/h3hIDeVyh8Dwy7m54xH4VnJW7khhYqQKdk0Ty",
+      "admin": true
+    },
+    {
+      "email": "b@b.b",
+      "name": "bebebe",
+      "password": "$2b$04$3OybW9zrKRbfw.uDRtr6f.V.dmRzAGB5nei0QkdifbCO.wbdEJwt2"
+    }
+  ]
+}

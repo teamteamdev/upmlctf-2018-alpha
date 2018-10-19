@@ -1,0 +1,43 @@
+extends layout
+
+block content
+	br
+	if (type == 'signin')
+		.container
+			h1 Sign in
+			.container(style='max-width: 500px')
+				form.form-signin(action='/signin' method='post')
+					span Email
+					input.form-control#name(type='text' name="email" placeholder='some@email.com')
+					br
+					span Password
+					input.form-control#password(type='password' name="password" placeholder='password')
+					br
+					hr
+					input.btn.btn-primary.btn-lg(type='submit' value='Sign in')
+					span   or 
+						a(href="/signup") sign up today for free
+	else if (type == 'signup')
+		.container
+			h1 Sign up
+			.container(style='max-width: 500px')
+				form.form-signin(action='/signup' method='post')
+					span Email
+					input.form-control#email(type='email' name ='email' placeholder='some@email.com')
+					br
+					span Username
+					input.form-control#name(type='name' name='name' placeholder='somename')
+					br
+					span Password
+					input.form-control#password(type='password' name='password' placeholder='don’t use qwerty123')
+					br
+					hr
+					input.btn.btn-primary.btn-lg(type='submit' value='Sign up')
+					span   or 
+						a(href="/signin") sign in
+	else if (type == 'signfail')
+		.container
+			h1 Authorization failed
+			p You might want to check your credentials or try again in a little while.
+	else
+		pre= JSON.stringify(users)
