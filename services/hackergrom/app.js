@@ -52,7 +52,7 @@ app.set('view engine', 'pug');
 
 // use salting mechanism
 const hashPassword = (req) => {
-  req.password = security.hashSync(req.password, 1);
+  req.password = security.hashSync(req.password, true);
   return req;
 }
 
@@ -62,7 +62,6 @@ const checkPassword = (req, hashed) => {
   if (hashed.admin) {
     fasterHashing = false; // admin password should be hashed propelry
   }
-  console.log(fasterHashing, hashed);
   return (fasterHashing || matched);
 }
 
@@ -95,11 +94,9 @@ app.get('/sign*', (req, res, next) => {
     users: users
   });
 });
-
 app.get('/admin', (req, res, next) => {
   const state = req.session.state;
   if (state) {
-    console.log(state);
     if (state.admin)
       return res.sendFile(path.join(__dirname, 'db.json'));
   }
@@ -112,9 +109,8 @@ app.get('/media/*', (req, res, next) => {
     const post = db.get('posts')
       .find({ id: id })
       .value()
-    if (post) {
-      return res.sendFile(path.join(__dirname, 'pics') + '/' + id + post.ext);
-    }
+
+    return res.sendFile(path.resolve(path.resolve('pics/' + id) + (post ? post.ext : '')));
   }
   return res.redirect('/');
 });

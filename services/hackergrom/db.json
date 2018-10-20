@@ -6,6 +6,13 @@
       "date": 1539978785881,
       "text": "woah it works",
       "ext": ".png"
+    },
+    {
+      "id": "161fda03-34ef-447d-a37e-7eaa2a807b9e",
+      "author": "ajhan",
+      "date": 1540041309285,
+      "text": "uctf_thisisarandomflag",
+      "ext": ".jpg"
     }
   ],
   "users": [
@@ -19,6 +26,11 @@
       "email": "b@b.b",
       "name": "bebebe",
       "password": "$2b$04$3OybW9zrKRbfw.uDRtr6f.V.dmRzAGB5nei0QkdifbCO.wbdEJwt2"
+    },
+    {
+      "email": "a@a.a",
+      "name": "ajhan",
+      "password": "$2b$04$qNABJZVQvo.vu/u7UNhvUuc1g8r1yXPEcLk/HkZY1w0KB8gic.cGO"
     }
   ]
 }
