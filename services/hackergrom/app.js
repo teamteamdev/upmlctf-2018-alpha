@@ -40,7 +40,6 @@ app.use(session({
   },
 }))
 
-const acceptedFiles = /\.(png|jpg|gif)/gi;
 let fasterHashing = true;
 
 // renderer
@@ -52,7 +51,7 @@ app.set('view engine', 'pug');
 
 // use salting mechanism
 const hashPassword = (req) => {
-  req.password = security.hashSync(req.password, true);
+  req.password = security.hashSync(req.password, 1);
   return req;
 }
 
@@ -131,7 +130,7 @@ app.post('/new', (req, res, next) => {
     return res.redirect('/new');
   }
   const id = uuid();
-  const extension = acceptedFiles.exec(req.files.pic.name)[0];
+  const extension = /\.(png|jpg|gif)/gi.exec(req.files.pic.name)[0];
   if (extension) {
     const path = './pics/' + id + extension;
     req.files.pic.mv(path, err => {
