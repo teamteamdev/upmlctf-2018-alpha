@@ -1,0 +1,24 @@
+extends layout
+
+block content
+	if state
+		br
+		.container
+			h5.text-center Hi, @#{state.name}! Here are your photos
+			if (posts)
+				each post in posts
+					.card(style='max-width: 400px; margin: 20px auto;')
+						img.card-img-top(src= '/media/' + post.id)
+						.container
+							p(style='margin: 10px 0 0')= post.text
+							p(style='margin: 0 0 14px').text-muted
+								small posted by #[b #{post.author}] on 
+								small= new Date(post.date).toISOString()
+			else
+				h4 not much of a blogger? too bad
+	else
+		.jumbotron.jumbotron-fluid
+			.container
+				h1.display-4(style='color:#d04000;font-weight:900;font-size:1000%;line-height:.9em;margin-bottom:.5em;') Snap-hack your life
+				p.lead With Hackergrom you can securely log your day-to-day life in the medium of nicely-filtered photos.
+				a(href='/signup').btn.btn-primary.btn-lg Sign up now

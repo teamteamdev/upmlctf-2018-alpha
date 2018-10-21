@@ -1,0 +1,14 @@
+[Unit]
+Description=UPML CTF 2018 Alpha: hackergrom
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/hackergrom
+User=hackergrom
+Group=hackergrom
+ExecStart=/usr/bin/env npm start
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,14 @@
+extends layout
+
+block content
+	br
+	.container
+		h1 New post
+		.container(style='max-width: 500px')
+			form.form-signin(action='/new' method='post' enctype="multipart/form-data")
+				textarea.form-control(name="text" placeholder='What’s on your mind?' rows='3')
+				input.form-control-file(type='file' name='pic')
+				hr
+				input.btn.btn-primary.btn-success(type='submit' value='Upload')
+				if error
+					.alert.alert-danger= error
