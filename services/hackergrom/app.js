@@ -93,6 +93,7 @@ app.get('/sign*', (req, res, next) => {
     users: users
   });
 });
+
 app.get('/admin', (req, res, next) => {
   const state = req.session.state;
   if (state) {
@@ -170,6 +171,7 @@ app.post('/signin', (req, res, next) => {
 });
 
 app.post('/signup', (req, res, next) => {
+  console.log(req.body);
   const nameExists = db.get('users')
     .find({ name: req.body.name }).value();
   const emailExists = db.get('users')
