@@ -171,7 +171,6 @@ app.post('/signin', (req, res, next) => {
 });
 
 app.post('/signup', (req, res, next) => {
-  console.log(req.body);
   const nameExists = db.get('users')
     .find({ name: req.body.name }).value();
   const emailExists = db.get('users')
