@@ -57,7 +57,7 @@ print(db.get_columns('note'))
 
 [Код эксплойта](javach_notebook_opendb.py)
 
-### Как пофиксить
+### Как пофиксить?
 
 1. Не хранить базу данных в директории `static/`
 
