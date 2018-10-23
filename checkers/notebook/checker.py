@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import requests, random, string, sys
 
 
@@ -14,7 +15,7 @@ def generate_string(N):
 
 def check(ip):
     try:
-        r = requests.get('http://' + ip, timeout=5)
+        r = requests.get('http://' + ip + ":8616", timeout=5)
     except requests.exceptions.Timeout as e:
         return {"status": NO_CONNECT, "error": "Got a timeout while accessing server."}
     except:
@@ -35,7 +36,7 @@ def put(ip, flag_id, flag):
     payload = {'note-name': flag_id, 'text': flag, 'key': key}
 
     try:
-        r = requests.post('http://%s/create' % ip, data=payload, timeout=5)
+        r = requests.post('http://%s:8616/create' % ip, data=payload, timeout=5)
     except requests.exceptions.Timeout as e:
         return {"status": NO_CONNECT, "error": "Got a timeout while accessing server.", "flag_id": flag_id, "key": key}
     except:
@@ -49,15 +50,18 @@ def put(ip, flag_id, flag):
 def get(ip, flag_id, flag):
     flag_id, key = flag_id.split('.')
     payload = {'note-name': flag_id, 'key': key}
-
+    
     try:
-        r = requests.post('http://%s/note' % ip, data=payload, timeout=5)
+        r = requests.post('http://%s:8616/note' % ip, data=payload, timeout=5)
     except requests.exceptions.Timeout as e:
         return {"status": NO_CONNECT, "error": "Got a timeout while accessing server."}
     except:
         return {"status": NO_CONNECT, "error": "Could not access server."}
-
-    if r.text != flag:
+    try:
+        text = str(r.text)
+    except:
+        return {"status": MUMBLE, "error": "Doesn't return flag properly."}
+    if str(r.text) != flag:
         return {"status": NO_FLAG, "error": "Flag doesn't exist or changed."}
     return {"status": OK}
 

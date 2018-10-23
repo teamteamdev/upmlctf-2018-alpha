@@ -20,7 +20,7 @@ def generate_string(len = 16, alph = string.ascii_uppercase + string.ascii_lower
     
 
 def throw(errno, message=""):
-    print >> sys.stderr, message
+    print message
     sys.exit(errno)
     
 
@@ -160,7 +160,7 @@ def check(ip):
     username, token = register(r)
     close(r)
     
-    r = remote(ip, PORT, timeout=1.5)
+    r = remote(ip, PORT, timeout=3)
     
     login(r, username, token)
     
@@ -178,7 +178,7 @@ def check(ip):
 
 
 def put(ip, flag):
-    r = remote(ip, PORT, timeout=1.5)
+    r = remote(ip, PORT, timeout=3)
     
     username, token = register(r)
     
@@ -199,7 +199,7 @@ def put(ip, flag):
 
 
 def get(ip, flag_id, flag):
-    r = remote(ip, PORT, timeout=1.5)
+    r = remote(ip, PORT, timeout=3)
     
     username, token = register(r)
     
