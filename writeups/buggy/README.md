@@ -112,7 +112,7 @@ print("Token?", flush=True)
 token = input()
 
 # search for dots and slashes 
-if re.search("[.\\]", token):
+if re.search("[./]", token):
     print("Invalid token!", flush=True)
 elif cmd == "put":
     print("Secret?", flush=True)
