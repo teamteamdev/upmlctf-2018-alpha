@@ -93,6 +93,7 @@ app.get('/sign*', (req, res, next) => {
     users: users
   });
 });
+
 app.get('/admin', (req, res, next) => {
   const state = req.session.state;
   if (state) {
